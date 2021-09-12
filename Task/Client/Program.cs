@@ -11,13 +11,12 @@ namespace Client
         static string iNpath = "In.txt";
         static string outPath = "Out.txt";
         static string uri = "https://localhost:44395/reverse/reversetext";
-        static string uri1 = "http://localhost:65256/WebService1.asmx/HelloWorld";
         static void Main(string[] args)
         {
             try
             {
                 //CreateFiles();
-                Exc();
+                Reverse();
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -28,7 +27,7 @@ namespace Client
             
         }
         
-        private static void Exc()
+        private static void Reverse()
         {
             if (GetLineCount(iNpath) >= 10)
             {
