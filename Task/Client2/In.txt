@@ -1,0 +1,11 @@
+﻿As the speed and ease-of-use 
+of GUIs applications 
+have improved over time, 
+the use of console applications
+has greatly diminished, but not disappeared. 
+Some users simply prefer console based applications, 
+while some organizations still rely on
+existing console 
+applications to handle 
+key data processing 
+tasks.

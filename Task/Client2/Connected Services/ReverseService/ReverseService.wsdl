@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="localhost" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="localhost" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="localhost">
+      <s:element name="ReverseText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReverseTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReverseTextResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ReverseTextSoapIn">
+    <wsdl:part name="parameters" element="tns:ReverseText" />
+  </wsdl:message>
+  <wsdl:message name="ReverseTextSoapOut">
+    <wsdl:part name="parameters" element="tns:ReverseTextResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ReviseServiceSoap">
+    <wsdl:operation name="ReverseText">
+      <wsdl:input message="tns:ReverseTextSoapIn" />
+      <wsdl:output message="tns:ReverseTextSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReviseServiceSoap" type="tns:ReviseServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReverseText">
+      <soap:operation soapAction="localhost/ReverseText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReviseServiceSoap12" type="tns:ReviseServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReverseText">
+      <soap12:operation soapAction="localhost/ReverseText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReviseService">
+    <wsdl:port name="ReviseServiceSoap" binding="tns:ReviseServiceSoap">
+      <soap:address location="https://localhost:44347/ReverseService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReviseServiceSoap12" binding="tns:ReviseServiceSoap12">
+      <soap12:address location="https://localhost:44347/ReverseService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
